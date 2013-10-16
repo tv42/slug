@@ -14,6 +14,9 @@ func TestSlug(t *testing.T) {
 		{"foo   ", "foo"},
 		{"exam҉ple", "example"},
 		{"Foo Bar", "foo-bar"},
+		{".foo", "foo"},
+		{"../evil", "evil"},
+		{"../../etc/passwd", "etc-passwd"},
 	}
 
 	for _, test := range tests {
