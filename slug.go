@@ -1,7 +1,7 @@
 package slug
 
 import (
-	"code.google.com/p/go.text/unicode/norm"
+	"golang.org/x/text/unicode/norm"
 	"regexp"
 	"strings"
 	"unicode"
