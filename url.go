@@ -5,8 +5,9 @@ import (
 	"strings"
 )
 
-// Slugify a URL passed as a string. This is a convenience wrapper
-// over URL. It fails only if parsing the URL fails.
+// URLString returns a slugified string based on the URL passed as a
+// string. This is a convenience wrapper over URL. It fails only if
+// parsing the URL fails.
 func URLString(s string) (string, error) {
 	u, err := url.Parse(s)
 	if err != nil {
@@ -15,12 +16,14 @@ func URLString(s string) (string, error) {
 	return URL(u), nil
 }
 
-const _WWW_PREFIX = "www."
-const _INDEX_SUFFIX = "/index.html"
-const _HTML_SUFFIX = ".html"
+const (
+	wwwPrefix   = "www."
+	indexSuffix = "/index.html"
+	htmlSuffix  = ".html"
+)
 
-// Slugify a URL. In addition to the usual slugification rules, the
-// following simplifications are done:
+// URL returns a slugified string based on the URL. In addition to the
+// usual slugification rules, the following simplifications are done:
 //
 //   - schemes `http` and `https` are removed
 //   - a leading `www.` in hostname is removed
@@ -35,14 +38,14 @@ func URL(u *url.URL) string {
 		u.Scheme = ""
 	}
 
-	if strings.HasPrefix(u.Host, _WWW_PREFIX) {
-		u.Host = u.Host[len(_WWW_PREFIX):]
+	if strings.HasPrefix(u.Host, wwwPrefix) {
+		u.Host = u.Host[len(wwwPrefix):]
 	}
 
-	if strings.HasSuffix(u.Path, _INDEX_SUFFIX) {
-		u.Path = u.Path[:len(u.Path)-len(_INDEX_SUFFIX)]
-	} else if strings.HasSuffix(u.Path, _HTML_SUFFIX) {
-		u.Path = u.Path[:len(u.Path)-len(_HTML_SUFFIX)]
+	if strings.HasSuffix(u.Path, indexSuffix) {
+		u.Path = u.Path[:len(u.Path)-len(indexSuffix)]
+	} else if strings.HasSuffix(u.Path, htmlSuffix) {
+		u.Path = u.Path[:len(u.Path)-len(htmlSuffix)]
 	}
 
 	return Slug(u.String())
