@@ -14,7 +14,7 @@ func TestURLString(t *testing.T) {
 		{"http://example.com/foo/bar", "example-com-foo-bar"},
 		{"http://www.example.com/", "example-com"},
 		{"https://www.example.com/", "example-com"},
-		{"http://ex...am҉ple.com/", "ex-ample-com"},
+		{"http://ex...am҉ple.com/", "ex-am-d2-89ple-com"},
 		{"/foo", "foo"},
 		{"//foo", "foo"},
 		{"http:foo", "foo"},
