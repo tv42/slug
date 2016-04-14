@@ -1,10 +1,11 @@
 package slug
 
 import (
-	"golang.org/x/text/unicode/norm"
 	"regexp"
 	"strings"
 	"unicode"
+
+	"golang.org/x/text/unicode/norm"
 )
 
 // don't even quote these

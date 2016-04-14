@@ -1,8 +1,9 @@
 package slug_test
 
 import (
-	"github.com/tv42/slug"
 	"testing"
+
+	"github.com/tv42/slug"
 )
 
 func TestSlug(t *testing.T) {

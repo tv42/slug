@@ -1,9 +1,10 @@
 package slug_test
 
 import (
-	"github.com/tv42/slug"
 	"net/url"
 	"testing"
+
+	"github.com/tv42/slug"
 )
 
 func TestURLString(t *testing.T) {
