@@ -27,6 +27,9 @@ func TestURLString(t *testing.T) {
 		{"http://www.example.com/foo#bar", "example-com-foo-bar"},
 		{"http://www.example.com/foo/index.html", "example-com-foo"},
 		{"http://www.example.com/foo/bar.html", "example-com-foo-bar"},
+		{"http://www.example.com/foo%7Cbar", "example-com-foo-bar"},
+		{"http://www.example.com/quux?foo%7Cbar", "example-com-quux-foo-bar"},
+		{"http://www.example.com/quux?thud#foo%7Cbar", "example-com-quux-thud-foo-bar"},
 	}
 
 	for _, test := range tests {
