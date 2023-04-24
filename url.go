@@ -39,14 +39,12 @@ func URL(u *url.URL) string {
 		u.Scheme = ""
 	}
 
-	if strings.HasPrefix(u.Host, wwwPrefix) {
-		u.Host = u.Host[len(wwwPrefix):]
-	}
+	u.Host = strings.TrimPrefix(u.Host, wwwPrefix)
 
 	if strings.HasSuffix(u.Path, indexSuffix) {
 		u.Path = u.Path[:len(u.Path)-len(indexSuffix)]
-	} else if strings.HasSuffix(u.Path, htmlSuffix) {
-		u.Path = u.Path[:len(u.Path)-len(htmlSuffix)]
+	} else {
+		u.Path = strings.TrimSuffix(u.Path, htmlSuffix)
 	}
 
 	// Take over formatting of Path, Query, Fragment so we can undo any percent escaping for them, for prettier output.
